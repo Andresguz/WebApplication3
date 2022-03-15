@@ -8,97 +8,98 @@ using WebApplication3.Models;
 
 namespace WebApplication3.Controllers
 {
-    public class UsersController : Controller
+    public class PlayerController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public UsersController(ApplicationDbContext context)
+        public PlayerController(ApplicationDbContext context)
         {
             _context = context;
         }
-        public IActionResult Index()
+        public IActionResult IndexPlayer()
         {
-            IEnumerable<User> users = _context.users;
-            return View(users);
+            IEnumerable<Players> players = _context.players;
+            return View(players);
 
 
         }
 
-        public IActionResult Create()
+        public IActionResult CreatePlayer()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(User user)
+        public IActionResult CreatePlayer(Players players)
         {
             if (ModelState.IsValid)
             {
-                _context.users.Add(user);
+                _context.players.Add(players);
+              
                 _context.SaveChanges();
 
                 TempData["message"] = "The user was created correctly";
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexPlayer");
             }
             return View();
         }
 
-        public IActionResult Edit(int? id)
+        public IActionResult EditPlayer(int? Id)
         {
-            if (id == null || id==0)
+            if (Id == null || Id == 0)
             {
                 return NotFound();
             }
-            var user = _context.users.Find(id);
-            if (user==null)
+            var player = _context.players.Find(Id);
+            if (player == null)
             {
                 return NotFound();
             }
-            return View(user);
+            return View(player);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(User user)
+        public IActionResult EditPlayer(Players player)
         {
             if (ModelState.IsValid)
             {
-                _context.users.Update(user);
+                _context.players.Update(player);
                 _context.SaveChanges();
 
                 TempData["message"] = "The user was updated correctly";
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexPlayer");
             }
             return View();
         }
 
-        public IActionResult Delete(int? id)
+        public IActionResult DeletePlayer(int? Id)
         {
-            if (id == null || id == 0)
+            if (Id == null || Id == 0)
             {
                 return NotFound();
             }
-            var user = _context.users.Find(id);
-            if (user == null)
+            var players = _context.players.Find(Id);
+            if (players == null)
             {
                 return NotFound();
             }
-            return View(user);
+            return View(players);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteUser(int? id)
+        public IActionResult Delete(int? Id_user)
         {
-            var user = _context.users.Find(id);
-            if (user == null)
+            var players = _context.players.Find(Id_user);
+            if (players == null)
             {
                 return NotFound();
             }
-            _context.users.Remove(user);
+            _context.players.Remove(players);
             _context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("IndexPlayer");
         }
     }
 }

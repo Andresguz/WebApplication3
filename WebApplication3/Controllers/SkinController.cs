@@ -8,95 +8,95 @@ using WebApplication3.Models;
 
 namespace WebApplication3.Controllers
 {
-    public class UsersController : Controller
+    public class SkinController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public UsersController(ApplicationDbContext context)
+        public SkinController(ApplicationDbContext context)
         {
             _context = context;
         }
-        public IActionResult Index()
+        public IActionResult IndexSkin()
         {
-            IEnumerable<User> users = _context.users;
-            return View(users);
+            IEnumerable<Skins> skins = _context.Skins;
+            return View(skins);
 
 
         }
 
-        public IActionResult Create()
+        public IActionResult CreateSkin()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(User user)
+        public IActionResult CreateSkin(Skins skins)
         {
             if (ModelState.IsValid)
             {
-                _context.users.Add(user);
+                _context.Skins.Add(skins);
                 _context.SaveChanges();
 
                 TempData["message"] = "The user was created correctly";
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexSkin");
             }
             return View();
         }
 
-        public IActionResult Edit(int? id)
+        public IActionResult EditSkins(int? Id)
         {
-            if (id == null || id==0)
+            if (Id == null || Id == 0)
             {
                 return NotFound();
             }
-            var user = _context.users.Find(id);
-            if (user==null)
+            var skins = _context.users.Find(Id);
+            if (skins == null)
             {
                 return NotFound();
             }
-            return View(user);
+            return View(skins);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(User user)
+        public IActionResult EditSkins(Skins skins)
         {
             if (ModelState.IsValid)
             {
-                _context.users.Update(user);
+                _context.Skins.Update(skins);
                 _context.SaveChanges();
 
                 TempData["message"] = "The user was updated correctly";
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexSkin");
             }
             return View();
         }
 
-        public IActionResult Delete(int? id)
+        public IActionResult DeleteSkins(int? Id)
         {
-            if (id == null || id == 0)
+            if (Id == null || Id == 0)
             {
                 return NotFound();
             }
-            var user = _context.users.Find(id);
-            if (user == null)
+            var skins = _context.users.Find(Id);
+            if (skins == null)
             {
                 return NotFound();
             }
-            return View(user);
+            return View(skins);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteUser(int? id)
+        public IActionResult Delete(int? Id_skin)
         {
-            var user = _context.users.Find(id);
-            if (user == null)
+            var skins = _context.users.Find(Id_skin);
+            if (skins == null)
             {
                 return NotFound();
             }
-            _context.users.Remove(user);
+           // _context.Skins.Remove(skins);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }

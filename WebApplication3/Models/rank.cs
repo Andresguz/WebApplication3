@@ -14,8 +14,7 @@ namespace WebApplication3.Models
         [Required(ErrorMessage = "This field is required")]
         [StringLength(50, ErrorMessage = "The name should contain more than {0} characters", MinimumLength = 3)]
         public string range { get; set; }
-        [Display(Name  = "Rango")]
-      
+    
    
         public int Pts { get; set; }
        

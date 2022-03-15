@@ -1,6 +1,6 @@
-﻿@model IEnumerable<WebApplication3.Models.User>
+﻿@model IEnumerable<WebApplication3.Models.Skins>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "IndexSkin";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,7 +10,7 @@
             <h3>Lista de libros</h3>
         </div>
         <div class="col-sm-6">
-            <a class="btn btn-success d-block" asp-action="Create" asp-controller="Users">Agregar nuevo libro</a>
+            <a class="btn btn-success d-block" asp-action="CreateSkin" asp-controller="Skin">Agregar nuevo skin</a>
         </div>
     </div>
     @if (TempData["message"] != null)
@@ -28,10 +28,9 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>@Html.DisplayNameFor(m => m.Id) </th>
-                        <th>@Html.DisplayNameFor(m => m.FirstName) </th>
-                        <th>@Html.DisplayNameFor(m => m.LastName) </th>
-                        <th>@Html.DisplayNameFor(m => m.DateOfBirthday) </th>
+                        <th>@Html.DisplayNameFor(m => m.Id_skin) </th>
+                        <th>@Html.DisplayNameFor(m => m.amountSkin) </th>
+
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -39,13 +38,12 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.Id</td>
-                            <td>@item.FirstName</td>
-                            <td>@item.LastName</td>
-                            <td>@item.DateOfBirthday</td>
+                            <td>@item.Id_skin</td>
+                            <td>@item.amountSkin</td>
+
                             <td>
-                                <a asp-controller="Users" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
-                                <a asp-controller="Users" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                                <a asp-controller="Skin" asp-action="EditSkins" asp-route-id="@item.Id_skin" class="btn btn-warning">Edit</a>
+                                <a asp-controller="Skin" asp-action="DeleteSkins" asp-route-id="@item.Id_skin" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                     }
@@ -58,3 +56,4 @@
         }
     </div>
 </div>
+

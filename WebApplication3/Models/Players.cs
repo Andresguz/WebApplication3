@@ -14,10 +14,10 @@ namespace WebApplication3.Models
         [Required(ErrorMessage = "This field is required")]
         [StringLength(50, ErrorMessage = "The name should contain more than {0} characters", MinimumLength = 3)]
         public string Nickname { get; set; }
-        [Display(Name = "NickName")]
+   
         public int Points { get; set; }
         [Required(ErrorMessage = "This field is required")]
-        [DataType(DataType.Date)]
+        
        
         public string classPlayer { get; set; }
 

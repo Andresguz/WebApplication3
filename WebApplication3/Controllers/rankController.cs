@@ -8,97 +8,97 @@ using WebApplication3.Models;
 
 namespace WebApplication3.Controllers
 {
-    public class UsersController : Controller
+    public class rankController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public UsersController(ApplicationDbContext context)
+        public rankController(ApplicationDbContext context)
         {
             _context = context;
         }
-        public IActionResult Index()
+        public IActionResult IndexRanks()
         {
-            IEnumerable<User> users = _context.users;
-            return View(users);
+            IEnumerable<rank> Rank = _context.Ranks;
+            return View(Rank);
 
 
         }
 
-        public IActionResult Create()
+        public IActionResult CreateRank()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(User user)
+        public IActionResult CreateRank(rank Rank)
         {
             if (ModelState.IsValid)
             {
-                _context.users.Add(user);
+                _context.Ranks.Add(Rank);
                 _context.SaveChanges();
 
                 TempData["message"] = "The user was created correctly";
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexRanks");
             }
             return View();
         }
 
-        public IActionResult Edit(int? id)
+        public IActionResult EditRank(int? Id)
         {
-            if (id == null || id==0)
+            if (Id == null || Id == 0)
             {
                 return NotFound();
             }
-            var user = _context.users.Find(id);
-            if (user==null)
+            var Rank = _context.users.Find(Id);
+            if (Rank == null)
             {
                 return NotFound();
             }
-            return View(user);
+            return View(Rank);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(User user)
+        public IActionResult EditRank(rank Rank)
         {
             if (ModelState.IsValid)
             {
-                _context.users.Update(user);
+                _context.Ranks.Update(Rank);
                 _context.SaveChanges();
 
                 TempData["message"] = "The user was updated correctly";
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexRanks");
             }
             return View();
         }
 
-        public IActionResult Delete(int? id)
+        public IActionResult deleteRank(int? Id)
         {
-            if (id == null || id == 0)
+            if (Id == null || Id == 0)
             {
                 return NotFound();
             }
-            var user = _context.users.Find(id);
-            if (user == null)
+            var Rank = _context.users.Find(Id);
+            if (Rank == null)
             {
                 return NotFound();
             }
-            return View(user);
+            return View(Rank);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteUser(int? id)
+        public IActionResult Delete(int? Id_ranks)
         {
-            var user = _context.users.Find(id);
-            if (user == null)
+            var Rank = _context.Ranks.Find(Id_ranks);
+            if (Rank == null)
             {
                 return NotFound();
             }
-            _context.users.Remove(user);
+            _context.Ranks.Remove(Rank);
             _context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("IndexRanks");
         }
     }
 }

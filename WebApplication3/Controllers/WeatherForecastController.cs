@@ -27,25 +27,6 @@ namespace mvcconreact.Controllers
 
       
 
-        public IActionResult Index()
-        {
-            PlayerManager manager = new PlayerManager();
-
-            Player player1 = new Player("Aldo Barrera", "Bronce");
-            manager.AddPlayer(player1);
-            Player player2 = new Player("VirtualXi", "Bronce");
-            manager.AddPlayer(player2);
-            Player player3 = new Player("Ninja", "Bronce");
-            manager.AddPlayer(player3);
-            Player player4 = new Player("Killer", "Bronce");
-            manager.AddPlayer(player4);
-
-
-            ArrayList players = manager.GetListPlayers();
-
-            ViewData["ranks"] = players;
-            ViewBag.data = players;
-            return View();
-        }
+     
     }
 }

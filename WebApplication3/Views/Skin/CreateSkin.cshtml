@@ -1,0 +1,31 @@
+﻿@model WebApplication3.Models.Skins
+
+@{
+    ViewData["Title"] = "CreateSkin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>CreateSkin</h1>
+
+<h4>Skins</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateSkin">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="amountSkin" class="control-label"></label>
+                <input asp-for="amountSkin" class="form-control" />
+                <span asp-validation-for="amountSkin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="IndexSkin">Back to List</a>
+</div>
+

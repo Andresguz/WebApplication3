@@ -1,16 +1,16 @@
-﻿@model IEnumerable<WebApplication3.Models.User>
+﻿@model IEnumerable<WebApplication3.Models.Players>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "IndexPlayer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="container">
     <div class="row">
         <div class="col-sm-6">
-            <h3>Lista de libros</h3>
+            <h3>Lista de Jugadores</h3>
         </div>
         <div class="col-sm-6">
-            <a class="btn btn-success d-block" asp-action="Create" asp-controller="Users">Agregar nuevo libro</a>
+            <a class="btn btn-success d-block" asp-action="CreatePlayer" asp-controller="Player">Agregar nuevo Jugador</a>
         </div>
     </div>
     @if (TempData["message"] != null)
@@ -28,10 +28,10 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>@Html.DisplayNameFor(m => m.Id) </th>
-                        <th>@Html.DisplayNameFor(m => m.FirstName) </th>
-                        <th>@Html.DisplayNameFor(m => m.LastName) </th>
-                        <th>@Html.DisplayNameFor(m => m.DateOfBirthday) </th>
+                        <th>@Html.DisplayNameFor(m => m.Id_user) </th>
+                        <th>@Html.DisplayNameFor(m => m.Nickname) </th>
+                        <th>@Html.DisplayNameFor(m => m.Points) </th>
+                        <th>@Html.DisplayNameFor(m => m.classPlayer) </th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -39,13 +39,13 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.Id</td>
-                            <td>@item.FirstName</td>
-                            <td>@item.LastName</td>
-                            <td>@item.DateOfBirthday</td>
+                            <td>@item.Id_user</td>
+                            <td>@item.Nickname</td>
+                            <td>@item.Points</td>
+                            <td>@item.classPlayer</td>
                             <td>
-                                <a asp-controller="Users" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
-                                <a asp-controller="Users" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                                <a asp-controller="Player" asp-action="EditPlayer" asp-route-id="@item.Id_user" class="btn btn-warning">Edit</a>
+                                <a asp-controller="Player" asp-action="DeletePlayer" asp-route-id="@item.Id_user" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                     }

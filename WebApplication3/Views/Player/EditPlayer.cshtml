@@ -1,0 +1,42 @@
+﻿@model WebApplication3.Models.Players
+
+@{
+    ViewData["Title"] = "EditPlayer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>EditPlayer</h1>
+
+<h4>Players</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditPlayer">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id_user" />
+            <div class="form-group">
+                <label asp-for="Nickname" class="control-label"></label>
+                <input asp-for="Nickname" class="form-control" />
+                <span asp-validation-for="Nickname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Points" class="control-label"></label>
+                <input asp-for="Points" class="form-control" />
+                <span asp-validation-for="Points" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="classPlayer" class="control-label"></label>
+                <input asp-for="classPlayer" class="form-control" />
+                <span asp-validation-for="classPlayer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="IndexPlayer">Back to List</a>
+</div>
+

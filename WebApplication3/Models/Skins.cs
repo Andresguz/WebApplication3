@@ -13,7 +13,7 @@ namespace WebApplication3.Models
 
         [Required(ErrorMessage = "This field is required")]
         [StringLength(50, ErrorMessage = "The name should contain more than {0} characters", MinimumLength = 3)]
-  
+        [Display(Name = "Amoint")]
         public int amountSkin { get; set; }
      
 
